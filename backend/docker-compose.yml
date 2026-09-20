@@ -1,0 +1,33 @@
+# Convenience for local development only — production uses Amazon RDS.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: smartpantry
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ENVIRONMENT: development
+      DATABASE_URL: postgresql+psycopg://postgres:postgres@db:5432/smartpantry
+      JWT_SECRET_KEY: dev-only-secret-not-for-production-use-0000
+      FRONTEND_URL: http://localhost:5173
+    ports:
+      - "8000:8000"
+
+volumes:
+  pgdata:
