@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-soft: var(--primary-soft);
+  
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-neo-border: var(--neo-border);
+  --color-neo-shadow: var(--neo-shadow);
+}
+
+:root {
+  --background: #fdfbf7;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --neo-border: #1a1a1a;
+  --neo-shadow: rgba(26, 26, 26, 0.15);
+}
+
+/* Theme: Green (Default) */
+[data-theme="green"] {
+  --primary: #10b981;
+  --primary-light: #34d399;
+  --primary-dark: #047857;
+  --primary-soft: rgba(16, 185, 129, 0.15);
+}
+
+/* Theme: Yellow */
+[data-theme="yellow"] {
+  --primary: #eab308;
+  --primary-light: #facc15;
+  --primary-dark: #a16207;
+  --primary-soft: rgba(234, 179, 8, 0.15);
+}
+
+/* Theme: Blue */
+[data-theme="blue"] {
+  --primary: #3b82f6;
+  --primary-light: #60a5fa;
+  --primary-dark: #1d4ed8;
+  --primary-soft: rgba(59, 130, 246, 0.15);
+}
+
+/* Theme: Purple */
+[data-theme="purple"] {
+  --primary: #8b5cf6;
+  --primary-light: #a78bfa;
+  --primary-dark: #6d28d9;
+  --primary-soft: rgba(139, 92, 246, 0.15);
+}
+
+/* Theme: Pink */
+[data-theme="pink"] {
+  --primary: #ec4899;
+  --primary-light: #f472b6;
+  --primary-dark: #be185d;
+  --primary-soft: rgba(236, 72, 153, 0.15);
+}
+
+/* Theme: Orange */
+[data-theme="orange"] {
+  --primary: #f97316;
+  --primary-light: #fb923c;
+  --primary-dark: #c2410c;
+  --primary-soft: rgba(249, 115, 22, 0.15);
+}
+
+/* Theme: Red */
+[data-theme="red"] {
+  --primary: #ef4444;
+  --primary-light: #f87171;
+  --primary-dark: #b91c1c;
+  --primary-soft: rgba(239, 68, 68, 0.15);
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    background-image: 
+      radial-gradient(circle at 15% 50%, var(--primary-soft) 0%, transparent 50%),
+      radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.6) 0%, transparent 50%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.tap-highlight-transparent {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Soft Neo-Brutalism Classes */
+.neo-card {
+  background-color: var(--surface);
+  border: 2px solid var(--neo-border);
+  box-shadow: 4px 4px 0 var(--neo-shadow);
+  border-radius: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.neo-card-sm {
+  background-color: var(--surface);
+  border: 2px solid var(--neo-border);
+  box-shadow: 2px 2px 0 var(--neo-shadow);
+  border-radius: 1rem;
+}
+
+.neo-button {
+  background-color: var(--primary);
+  color: #fff;
+  border: 2px solid var(--neo-border);
+  box-shadow: 3px 3px 0 var(--neo-shadow);
+  border-radius: 1rem;
+  font-weight: 700;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.neo-button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0px 0px 0 var(--neo-shadow);
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
